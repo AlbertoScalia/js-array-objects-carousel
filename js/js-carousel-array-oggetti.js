@@ -25,6 +25,8 @@ const images = [
 
 //Inserisco le costanti e le variabili
 const attivaImmagine = document.getElementById('active-img');
+const arrowUp = document.getElementById('arrow-up');
+const arrowDown = document.getElementById('arrow-down');
 const contenitoreThumbnail = document.getElementById('thumbnails');
 let index = 0;
 
@@ -59,7 +61,42 @@ for (let i = 0; i < images.length; i++) {
         attivaImmagine.src = images[i].image;
         thumbnailEl[i].classList.add("active");
     });
-
 }
 
+const thumbnailEl = document.querySelectorAll('.container #thumbnails .thumbnail');
+thumbnailEl[index].classList.add("active");
+
+//Richiamo delle funzioni per attivare i bottoni
+arrowDown.addEventListener("click", changeattivaImmagine);
+arrowUp.addEventListener("click", changeattivaImmagineReverse);
+
+//Funzione tasto in basso
+function changeattivaImmagine() {
+    thumbnailEl[index].classList.remove("active");
+    if (index < images.length - 1) {
+        index++;
+    } else {
+        index = 0;
+    };
+
+    attivaImmagine.src = images[index].image;
+    contenitoreTitolo.innerHTML = images[index].title;
+    contenitoreTesto.innerHTML = images[index].text;
+    thumbnailEl[index].classList.add("active");
+};
+
+//Funzione tasto in alto
+function changeattivaImmagineReverse() {
+    thumbnailEl[index].classList.remove("active");
+    if (index > 0) {
+        index--;
+    } else {
+        index = images.length - 1;
+    };
+
+    attivaImmagine.src = images[index].image;
+    contenitoreTitolo.innerHTML = images[index].title;
+    contenitoreTesto.innerHTML = images[index].text;
+    thumbnailEl[index].classList.add("active");
+}
 
