@@ -22,3 +22,44 @@ const images = [
     }
 ];
 
+
+//Inserisco le costanti e le variabili
+const attivaImmagine = document.getElementById('active-img');
+const contenitoreThumbnail = document.getElementById('thumbnails');
+let index = 0;
+
+//Setto la prima immagine dell'array come prima immagne del carousel:
+attivaImmagine.src = images[index].image;
+
+//Insrisco il titolo e la descrizione
+let contenitoreDescrizione = document.getElementById('descrizione');
+
+let contenitoreTitolo = document.createElement('div');
+let contenitoreTesto = document.createElement('div');
+
+contenitoreTitolo.innerHTML = images[index].title;
+contenitoreTesto.innerHTML = images[index].text;
+
+contenitoreTitolo.classList.add('title');
+
+contenitoreDescrizione.append(contenitoreTitolo);
+contenitoreDescrizione.append(contenitoreTesto);
+
+//Ciclo for per generare i thumbnails con l'ddEventListener clicl
+for (let i = 0; i < images.length; i++) {
+    let nuovoThumbnail = document.createElement('img');
+    nuovoThumbnail.src = images[i].image;
+    nuovoThumbnail.style.height = "calc(100% / " + images.length + ")";
+    nuovoThumbnail.classList.add("thumbnail");
+    contenitoreThumbnail.append(nuovoThumbnail);
+
+    nuovoThumbnail.addEventListener('click', function () {
+        thumbnailEl[index].classList.remove("active");
+        index = i;
+        attivaImmagine.src = images[i].image;
+        thumbnailEl[i].classList.add("active");
+    });
+
+}
+
+

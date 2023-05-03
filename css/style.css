@@ -29,3 +29,22 @@
     text-align: right;
     color: white;
 }
+
+.container #carousel .title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.container #thumbnails {
+    display: flex;
+    flex-flow: column nowrap;
+    position: relative;
+    background-color: black;
+}
+
+.container #thumbnails .thumbnail {
+    width: 300px;
+    object-fit: cover;
+    opacity: 0.4;
+}
+
