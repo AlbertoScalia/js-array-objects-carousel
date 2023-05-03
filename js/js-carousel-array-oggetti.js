@@ -59,6 +59,8 @@ for (let i = 0; i < images.length; i++) {
         thumbnailEl[index].classList.remove("active");
         index = i;
         attivaImmagine.src = images[i].image;
+        contenitoreTitolo.innerHTML = images[index].title;
+        contenitoreTesto.innerHTML = images[index].text;
         thumbnailEl[i].classList.add("active");
     });
 }
